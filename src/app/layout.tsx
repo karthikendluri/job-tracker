@@ -3,7 +3,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'JobTracker — AI Job Search & Application Tracker',
-  description: 'Find jobs matching your resume with AI. Track every application from saved to offer.',
+  description: 'Find jobs matching your resume and track every application.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

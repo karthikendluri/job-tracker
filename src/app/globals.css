@@ -1,65 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
 :root {
-  --font: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  --bg: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface2: #F1F5F9;
+  --border: #E2E8F0;
+  --text: #0F172A;
+  --text2: #334155;
+  --muted: #64748B;
+  --dim: #94A3B8;
+  --blue: #2563EB;
+  --blue-bg: #EFF6FF;
+  --blue-bd: #BFDBFE;
+  --green: #059669;
+  --green-bg: #ECFDF5;
+  --green-bd: #6EE7B7;
+  --amber: #D97706;
+  --amber-bg: #FFFBEB;
+  --amber-bd: #FCD34D;
+  --red: #DC2626;
+  --red-bg: #FEF2F2;
+  --red-bd: #FCA5A5;
+  --purple: #7C3AED;
+  --purple-bg: #F5F3FF;
+  --purple-bd: #C4B5FD;
+  --r: 8px;
+  --rl: 12px;
+  --font: 'Plus Jakarta Sans', sans-serif;
   --mono: 'JetBrains Mono', monospace;
-  --bg:       #F0F4F8;
-  --surface:  #FFFFFF;
-  --surface2: #F8FAFC;
-  --border:   #E2E8F0;
-  --text:     #0F172A;
-  --text2:    #334155;
-  --muted:    #64748B;
-  --dim:      #94A3B8;
-  --blue:     #2563EB;
-  --blue-l:   #EFF6FF;
-  --blue-b:   #BFDBFE;
-  --green:    #059669;
-  --green-l:  #ECFDF5;
-  --green-b:  #A7F3D0;
-  --amber:    #D97706;
-  --amber-l:  #FFFBEB;
-  --amber-b:  #FDE68A;
-  --red:      #DC2626;
-  --red-l:    #FEF2F2;
-  --red-b:    #FECACA;
-  --purple:   #7C3AED;
-  --purple-l: #F5F3FF;
-  --purple-b: #DDD6FE;
-  --r: 8px; --rl: 12px; --rxl: 16px;
 }
 
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: var(--font);
-  -webkit-font-smoothing: antialiased;
-  min-height: 100vh;
-  font-size: 14px;
-  line-height: 1.5;
-}
+body { background: var(--bg); color: var(--text); font-family: var(--font); -webkit-font-smoothing: antialiased; }
+::-webkit-scrollbar { width: 5px; } ::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 3px; }
+::selection { background: var(--blue); color: #fff; }
+
+@keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+@keyframes popIn  { from { opacity:0; transform:scale(.96); } to { opacity:1; transform:scale(1); } }
+@keyframes spin   { to { transform:rotate(360deg); } }
+
+.fadeUp { animation: fadeUp .4s ease both; }
+.popIn  { animation: popIn  .25s ease both; }
+.spin   { animation: spin .7s linear infinite; }
+.d1{animation-delay:.05s} .d2{animation-delay:.1s} .d3{animation-delay:.15s} .d4{animation-delay:.2s} .d5{animation-delay:.25s} .d6{animation-delay:.3s}
 
 button { font-family: var(--font); cursor: pointer; }
 input, textarea, select { font-family: var(--font); }
-a { color: inherit; }
-
-::-webkit-scrollbar { width: 5px; height: 5px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 3px; }
-::selection { background: var(--blue); color: #fff; }
-
-@keyframes fadeUp { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
-@keyframes popIn  { from { opacity:0; transform:scale(0.97); }        to { opacity:1; transform:scale(1); } }
-@keyframes spin   { to { transform: rotate(360deg); } }
-
-.fade-up { animation: fadeUp 0.4s ease both; }
-.pop-in  { animation: popIn  0.25s ease both; }
-.spinner { animation: spin 0.7s linear infinite; }
-.d1 { animation-delay: 0.05s; }
-.d2 { animation-delay: 0.10s; }
-.d3 { animation-delay: 0.15s; }
-.d4 { animation-delay: 0.20s; }
-.d5 { animation-delay: 0.25s; }
+a { text-decoration: none; }

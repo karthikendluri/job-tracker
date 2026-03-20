@@ -1,6 +1,3 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  env: { NEXT_TELEMETRY_DISABLED: '1' },
-};
+const nextConfig = {};
 module.exports = nextConfig;

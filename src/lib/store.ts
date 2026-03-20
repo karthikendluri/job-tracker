@@ -1,38 +1,36 @@
-import { Job, Stats } from './types';
+import { Job } from './types';
 
-const store = new Map<string, Job>();
+const jobStore = new Map();
 
-export function getAllJobs(): Job[] {
-  return Array.from(store.values()).sort(
-    (a, b) => new Date(b.dateFound).getTime() - new Date(a.dateFound).getTime()
-  );
-}
-
-export function saveJob(job: Job): Job {
-  store.set(job.id, job);
-  return job;
-}
-
-export function updateJob(id: string, updates: Partial<Job>): Job | null {
-  const job = store.get(id);
-  if (!job) return null;
-  const updated = { ...job, ...updates };
-  store.set(id, updated);
-  return updated;
-}
-
-export function deleteJob(id: string): void {
-  store.delete(id);
-}
-
-export function getStats(): Stats {
-  const jobs = getAllJobs();
-  return {
-    total:        jobs.length,
-    saved:        jobs.filter(j => j.status === 'saved').length,
-    applied:      jobs.filter(j => j.status === 'applied').length,
-    interviewing: jobs.filter(j => j.status === 'interviewing').length,
-    rejected:     jobs.filter(j => j.status === 'rejected').length,
-    offer:        jobs.filter(j => j.status === 'offer').length,
-  };
-}
+export const store = {
+  getAll(): Job[] {
+    return Array.from(jobStore.values()).sort(
+      (a: any, b: any) => new Date(b.dateFound).getTime() - new Date(a.dateFound).getTime()
+    );
+  },
+  upsert(job: Job): Job {
+    jobStore.set(job.id, job);
+    return job;
+  },
+  update(id: string, updates: any): Job | null {
+    const existing = jobStore.get(id);
+    if (!existing) return null;
+    const updated = { ...existing, ...updates };
+    jobStore.set(id, updated);
+    return updated;
+  },
+  delete(id: string): void {
+    jobStore.delete(id);
+  },
+  stats() {
+    const all = this.getAll();
+    return {
+      total:        all.length,
+      saved:        all.filter((j: Job) => j.status === 'saved').length,
+      applied:      all.filter((j: Job) => j.status === 'applied').length,
+      interviewing: all.filter((j: Job) => j.status === 'interviewing').length,
+      rejected:     all.filter((j: Job) => j.status === 'rejected').length,
+      offer:        all.filter((j: Job) => j.status === 'offer').length,
+    };
+  },
+};
