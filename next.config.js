@@ -1,9 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Removing ignoreDuringBuilds is recommended once you fix linting/types
-  // for a more secure production build.
+  // Recommendation: Turn these to 'false' to keep your code high-quality
   eslint: { ignoreDuringBuilds: false },
   typescript: { ignoreBuildErrors: false },
+  // Optional: If you use external images for company logos
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: '**' },
+    ],
+  },
 };
 
 module.exports = nextConfig;
